@@ -1,0 +1,13 @@
+@mixin d-flex($direction, $justify, $align){
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin iconPadding($horizontalAdjust, $verticalAdjust, $borderRadiusAdjust) {
+    $iconHorizontalPadding: calc(1rem + $horizontalAdjust);
+    $iconVerticalPadding: calc(1rem + $verticalAdjust);
+    padding: $iconVerticalPadding $iconHorizontalPadding;
+    border-radius: calc(10px + $borderRadiusAdjust);
+}

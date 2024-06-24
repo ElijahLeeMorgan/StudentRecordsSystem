@@ -1,56 +1,33 @@
-import { useEffect, useState } from 'react';
-import './App.css';
+import { useContext, lazy, Suspense } from 'react';
+import { ThemeContext } from './context/theme.context.tsx';
+import Navbar from './components/navbar.component.tsx';
+import { Routes, Route } from 'react-router-dom';
+import CustomLinearProgress from './components/spinner.component.tsx/spinner.component.tsx';
 
-interface Forecast {
-    date: string;
-    temperatureC: number;
-    temperatureF: number;
-    summary: string;
-}
+//Lazy loading to improve performance.
+const Home = lazy(() => import('./pages/home/home.page'));
+const Buildings = lazy(() => import('./pages/buildings/buildings.page'));
 
-function App() {
-    const [forecasts, setForecasts] = useState<Forecast[]>();
+const App = () => {
+    const { darkMode } = useContext(ThemeContext);
 
-    useEffect(() => {
-        populateWeatherData();
-    }, []);
-
-    const contents = forecasts === undefined
-        ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
-        : <table className="table table-striped" aria-labelledby="tableLabel">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Temp. (C)</th>
-                    <th>Temp. (F)</th>
-                    <th>Summary</th>
-                </tr>
-            </thead>
-            <tbody>
-                {forecasts.map(forecast =>
-                    <tr key={forecast.date}>
-                        <td>{forecast.date}</td>
-                        <td>{forecast.temperatureC}</td>
-                        <td>{forecast.temperatureF}</td>
-                        <td>{forecast.summary}</td>
-                    </tr>
-                )}
-            </tbody>
-        </table>;
+    const appStyles = darkMode ? "app dark" : "app"
 
     return (
-        <div>
-            <h1 id="tableLabel">Weather forecast</h1>
-            <p>This component demonstrates fetching data from the server.</p>
-            {contents}
+        <div className={appStyles}>
+            <Navbar />
+            <div className="wrapper">
+                <Suspense fallback={<CustomLinearProgress />}>
+                <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/buildings">
+                            <Route index element={<Buildings />} />
+                        </Route>
+                </Routes>
+                </Suspense>
+            </div>
         </div>
-    );
-
-    async function populateWeatherData() {
-        const response = await fetch('weatherforecast');
-        const data = await response.json();
-        setForecasts(data);
-    }
+    )
 }
 
 export default App;

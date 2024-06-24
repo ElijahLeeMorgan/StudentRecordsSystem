@@ -1,0 +1,107 @@
+@import "../_mixins.scss"; //Note to self, mixins are a great way to reuse code. I should use them more often.
+
+.navbar {
+    color: #fff; //var(--text-color1);
+    @include d-flex(row, space-between, center);
+    background-color: rgb(52, 51, 51); //TODO Change style for more modern look: https://d3h2k7ug3o5pb3.cloudfront.net/image/2020-12-01/7c89a090-33df-11eb-b5e9-cb6d63d43724.jpg
+    width: 100%;
+    height: 60px;
+    padding: 0rem 2rem;
+
+    .brand {
+        flex: 1;
+    }
+
+    .menu {
+        ul {
+            @include d-flex(row, flex-start, center);
+            gap: 0.25rem;
+            li {
+                a {
+                    @include iconPadding(0px, 0px, 0px);
+                    color: #fff; //var(--text-color1);
+                    cursor: pointer;
+                    transition: all 0.3s ease-in-out;
+
+                    &:hover {
+                        background-color: #fff; //var(--blue);
+                        color: #000; //var(--text-color1);
+                    }
+                }
+            }
+        }
+    }
+
+    .hamburger {
+        display: none;
+        cursor: pointer;
+
+        span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #fff; //var(--text-color1);
+            margin: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+    }
+
+    .toggle {
+        margin-left: 0.5rem;
+        cursor: pointer;
+
+        svg {
+            transition: all 0.3s ease-in-out;
+            color: var(--blue);
+        }
+
+        button {
+            @include iconPadding(-4px, -4px, 0px); //Padding was slightly off without this.
+            transition: all 0.3s ease-in-out;
+
+            &:hover { //TODO Change hover background depending on theme.
+                background-color: rgb(55, 55, 55); //var(--blue);
+                color: #000; //var(--text-color1);
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        padding: 0rem 1rem;
+
+        .menu {
+            @include d-flex(column, flex-start, center);
+            color: inherit;
+            background-color: inherit;
+            width: 240px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: -240px;
+            z-index: 100; //Just to be certain.
+            transition: all 0.3s ease-in-out;
+
+            &.open {
+                left: 0;
+            }
+
+            ul {
+                @include d-flex(column, center, center);
+                height: 100%;
+                gap: 2rem;
+
+                li {
+                    a {
+
+                    }
+                }
+            }
+        }
+
+        .hamburger {
+            display: block;
+        }
+    }
+}
