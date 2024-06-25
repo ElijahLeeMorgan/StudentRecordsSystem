@@ -39,7 +39,8 @@ namespace StudentRecordsSystem.Server.Controllers
         [Route("Get")]
         public async Task<ActionResult<IEnumerable<BuildingGetDto>>> GetBuildings()
         {
-            var buildings = await _context.Buildings.ToListAsync();//Change var to Building?
+            //var buildings = await _context.Buildings.OrderBy(q => q.ID).ToListAsync();
+            var buildings = await _context.Buildings.ToListAsync();//TODO Allow users to choose the sorting method
             var convertedBuildings = _mapper.Map<IEnumerable<BuildingGetDto>>(buildings);
 
             return Ok(convertedBuildings);

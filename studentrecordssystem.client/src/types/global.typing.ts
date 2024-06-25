@@ -5,3 +5,8 @@ export interface IBuilding {
     phoneNumber: string;
     createdAt: string;
 }
+export interface ICreateBuildingDto {
+    name: string;
+    address: string;
+    phoneNumber: string;
+}

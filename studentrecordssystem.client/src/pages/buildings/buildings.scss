@@ -1,3 +1,25 @@
-.home {
+@import "../../_mixins.scss";
 
+.buildings {
+    .heading {
+        @include d-flex(row, space-between, center);
+        width: 100%;
+    }
+}
+
+//The textbox components have a really long and complex class name, so I did this.
+.add-building {
+    @include d-flex(column, space-between, center);
+    width: 500px;
+    max-width: 100%;
+    gap: 1rem;
+
+    * {
+        color: var(--text-color1);
+     }
+}
+
+.btn-group {
+    @include d-flex(row, center, center);
+    gap: 1rem;
 }
