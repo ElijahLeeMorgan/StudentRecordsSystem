@@ -8,6 +8,10 @@ import CustomLinearProgress from './components/spinner.component.tsx/spinner.com
 const Home = lazy(() => import('./pages/home/home.page'));
 const Buildings = lazy(() => import('./pages/buildings/buildings.page'));
 const AddBuilding = lazy(() => import('./pages/buildings/addBuilding.page'));
+const Grades = lazy(() => import('./pages/grades/grades.page'));
+const AddGrade = lazy(() => import('./pages/grades/addGrade.page'));
+const Students = lazy(() => import('./pages/students/students.page'));
+const AddStudent = lazy(() => import('./pages/students/addStudent.page'));
 
 const App = () => {
     const { darkMode } = useContext(ThemeContext);
@@ -23,6 +27,10 @@ const App = () => {
                         <Route path="/" element={<Home />} />
                         <Route path="/buildings" index element={<Buildings />} />
                         <Route path="/buildings/add" element={<AddBuilding />} />
+                        <Route path="/grades" index element={<Grades />} />
+                        <Route path="/grades/add" element={<AddGrade />} />
+                        <Route path="/students" index element={<Students />} />
+                        <Route path="/students/add" element={<AddStudent />} />
                     </Routes>
                 </Suspense>
             </div>

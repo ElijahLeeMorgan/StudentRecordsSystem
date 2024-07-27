@@ -3,6 +3,7 @@ import { Box } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import moment from 'moment';
 import './buildingsGrid.scss';
+import { IBuilding } from '../../types/global.typing';
 
 const BuildingColumns: GridColDef[] = [
     { field: "id", headerName: "ID", width: 100 },
