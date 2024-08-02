@@ -6,11 +6,11 @@ import './studentsGrid.scss';
 import { IStudent } from '../../types/global.typing';
 
 const StudentColumns: GridColDef[] = [
-    { field: "id", headerName: "ID", width: 100 },
-    { field: "firstName", headerName: "First Name", width: 100 },
-    { field: "lastName", headerName: "Last Name", width: 100 },
+    { field: "id", headerName: "ID", width: 50 },
+    { field: "firstName", headerName: "First Name", width: 200 },
+    { field: "lastName", headerName: "Last Name", width: 200 },
     { field: "email", headerName: "Email", width: 200 },
-    { field: "gpa", headerName: "GPA", width: 100 },
+    { field: "gpa", headerName: "GPA", width: 50 },
     { field: "detentions", headerName: "Detentions", width: 100 },
     { field: "absences", headerName: "Absenses", width: 100 },
     { field: "emergencyContact", headerName: "Emergency Contact", width: 150 },

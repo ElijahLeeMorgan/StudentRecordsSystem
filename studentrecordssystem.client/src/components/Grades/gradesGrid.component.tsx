@@ -6,9 +6,9 @@ import './gradesGrid.scss';
 import { IGrade } from '../../types/global.typing';
 
 const GradeColumns: GridColDef[] = [
-    { field: "id", headerName: "ID", width: 100 },
+    { field: "id", headerName: "ID", width: 50 },
     { field: "year", headerName: "Year", width: 200 },
-    { field: "buildingName", headerName: "BuildingName", width: 200 },
+    { field: "buildingName", headerName: "Building Name", width: 200 },
     { field: "createdAt", headerName: "Created", width: 200,
         renderCell: (params) => moment(params.row.createdAt).fromNow(),
     }

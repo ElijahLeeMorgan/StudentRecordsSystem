@@ -41,3 +41,17 @@ export interface ICreateStudentDto {
     email: string;
     gradeID: string;
 }
+
+export interface IClass {
+    id: string;
+    subject: string;
+    grade: string;
+    studentID: string;
+    studentFirstName: string;
+    studentLastName: string;
+    createdAt: string;
+}
+export interface ICreateClassDto {
+    subject: string;
+    studentID: string;
+}

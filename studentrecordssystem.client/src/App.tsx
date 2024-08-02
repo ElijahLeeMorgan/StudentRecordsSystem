@@ -12,6 +12,8 @@ const Grades = lazy(() => import('./pages/grades/grades.page'));
 const AddGrade = lazy(() => import('./pages/grades/addGrade.page'));
 const Students = lazy(() => import('./pages/students/students.page'));
 const AddStudent = lazy(() => import('./pages/students/addStudent.page'));
+const Classes = lazy(() => import('./pages/classes/classes.page'));
+const AddClass = lazy(() => import('./pages/classes/addClass.page'));
 
 const App = () => {
     const { darkMode } = useContext(ThemeContext);
@@ -31,6 +33,8 @@ const App = () => {
                         <Route path="/grades/add" element={<AddGrade />} />
                         <Route path="/students" index element={<Students />} />
                         <Route path="/students/add" element={<AddStudent />} />
+                        <Route path="/classes" index element={<Classes />} />
+                        <Route path="/classes/add" element={<AddClass />} />
                     </Routes>
                 </Suspense>
             </div>

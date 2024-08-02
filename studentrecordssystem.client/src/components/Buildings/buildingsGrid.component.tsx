@@ -6,7 +6,7 @@ import './buildingsGrid.scss';
 import { IBuilding } from '../../types/global.typing';
 
 const BuildingColumns: GridColDef[] = [
-    { field: "id", headerName: "ID", width: 100 },
+    { field: "id", headerName: "ID", width: 50 },
     { field: "name", headerName: "Name", width: 200 },
     { field: "address", headerName: "Address", width: 200 },
     { field: "phoneNumber", headerName: "Phone Number", width: 200 },
