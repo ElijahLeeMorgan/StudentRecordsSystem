@@ -1,9 +1,10 @@
 import {useEffect, useState} from 'react';
 import './classes.scss';
 import httpModule from '../../helpers/http.module';
+import objectDeleteModule from '../../helpers/objectDelete.module';
 import { IClass } from '../../types/global.typing';
-import { Button, CircularProgress } from '@mui/material';
-import { Add } from '@mui/icons-material';
+import { Button, CircularProgress, ButtonGroup } from '@mui/material';
+import { Add, DeleteForever } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { ClassesGrid } from '../../components/Classes/classesGrid.component';
 
@@ -11,6 +12,16 @@ const Classes = () => {
     const [classes, setClasses] = useState<IClass[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const redirect = useNavigate();
+
+    const handleClickDeleteButton = () => {
+        const id: number = parseInt(prompt("Enter the class ID you want to delete:") || "-1");
+        if (id <= 0) {
+            alert("Please enter a valid class ID to delete");
+            return;
+        } else {
+            objectDeleteModule("Class", id);
+        }
+    }
 
     useEffect(() => {
         setLoading(true);
@@ -30,9 +41,14 @@ const Classes = () => {
     return (<div className="content classes">
         <div className="heading">
             <h2>Classes</h2>
-            <Button variant="outlined" onClick={() => redirect("/classes/add")}>
-                <Add />
-            </Button>
+            <ButtonGroup variant="contained">
+                <Button onClick={() => redirect("/classes/add")}>
+                    <Add />
+                </Button>
+                <Button color="error" onClick={() => handleClickDeleteButton()}>
+                    <DeleteForever />
+                </Button>
+            </ButtonGroup>
         </div>
         {loading ?
               <CircularProgress size={100}></CircularProgress>

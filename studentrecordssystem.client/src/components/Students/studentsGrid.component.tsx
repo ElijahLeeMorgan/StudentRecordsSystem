@@ -5,6 +5,8 @@ import moment from 'moment';
 import './studentsGrid.scss';
 import { IStudent } from '../../types/global.typing';
 
+
+//TODO: Add an image column for the building image
 const StudentColumns: GridColDef[] = [
     { field: "id", headerName: "ID", width: 50 },
     { field: "firstName", headerName: "First Name", width: 200 },
