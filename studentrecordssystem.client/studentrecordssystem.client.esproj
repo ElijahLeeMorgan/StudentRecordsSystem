@@ -12,7 +12,6 @@
     <Folder Include="src\assets\" />
     <Folder Include="src\components\Buildings\" />
     <Folder Include="src\constants\" />
-    <Folder Include="src\helpers\" />
     <Folder Include="src\types\" />
   </ItemGroup>
 </Project>
