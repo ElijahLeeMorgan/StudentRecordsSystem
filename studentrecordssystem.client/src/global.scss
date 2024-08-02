@@ -10,7 +10,7 @@
 
 :root {
     --blue: #4864ff;
-    --bg-color: #fff;
+    --bg-color: #eee;
     --text-color1: #000;
     --text-color2: #555;
 }
@@ -40,8 +40,8 @@ ul {
     transition: all 0.3s ease-in-out;
 
     &.dark {
-        --bg-color: #000;
-        --text-color1: #fff;
+        --bg-color: #282828;
+        --text-color1: #ccc;
         --text-color2: #999;
     }
 }

@@ -1,7 +1,7 @@
 @import "../_mixins.scss"; //Note to self, mixins are a great way to reuse code. I should use them more often.
 
 .navbar {
-    color: #fff; //var(--text-color1);
+    color: #eee; //var(--text-color1);
     @include d-flex(row, space-between, center);
     background-color: rgb(52, 51, 51); //TODO Change style for more modern look: https://d3h2k7ug3o5pb3.cloudfront.net/image/2020-12-01/7c89a090-33df-11eb-b5e9-cb6d63d43724.jpg
     width: 100%;
@@ -16,16 +16,17 @@
         ul {
             @include d-flex(row, flex-start, center);
             gap: 0.25rem;
+
             li {
                 a {
                     @include iconPadding(0px, 0px, 0px);
-                    color: #fff; //var(--text-color1);
+                    color: #eee;
                     cursor: pointer;
                     transition: all 0.3s ease-in-out;
 
                     &:hover {
-                        background-color: #fff; //var(--blue);
-                        color: #000; //var(--text-color1);
+                        background-color: var(--bg-color);
+                        color: var(--text-color1);
                     }
                 }
             }
