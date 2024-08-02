@@ -1,5 +1,7 @@
-.buildingsGrid {
+.students-grid {
     * {
         color: var(--text-color1);
+        background-color: var(--bg-color);
+        transition: all 0.3s ease-in-out;
     }
 }
