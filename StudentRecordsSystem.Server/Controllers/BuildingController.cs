@@ -53,6 +53,20 @@ namespace StudentRecordsSystem.Server.Controllers
         // Update
 
         // Delete
+        [HttpDelete]
+        [Route("Delete")]
+        public async Task<IActionResult> DeleteBuilding(ulong id)
+        {
+            var building = await _context.Buildings.FindAsync(id);
+            if (building == null)
+            {
+                return NotFound("Building not found");
+            }
 
+            _context.Buildings.Remove(building);
+            await _context.SaveChangesAsync();
+
+            return Ok("Building deleted successfully");
+        }
     }
 }

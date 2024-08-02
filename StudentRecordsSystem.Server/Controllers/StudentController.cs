@@ -48,5 +48,20 @@ namespace StudentRecordsSystem.Server.Controllers
         //Update
 
         //Delete
+        [HttpDelete]
+        [Route("Delete")]
+        public async Task<IActionResult> DeleteStudent(ulong id)
+        {
+            var student = await _context.Students.FindAsync(id);
+            if (student == null)
+            {
+                return NotFound("Student not found");
+            }
+
+            _context.Students.Remove(student);
+            await _context.SaveChangesAsync();
+
+            return Ok("Student deleted successfully");
+        }
     }
 }

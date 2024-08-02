@@ -50,5 +50,20 @@ namespace StudentRecordsSystem.Server.Controllers
         // Update
 
         // Delete
+        [HttpDelete]
+        [Route("Delete")]
+        public async Task<IActionResult> DeleteGrade(ulong id)
+        {
+            var grade = await _context.Grades.FindAsync(id);
+            if (grade == null)
+            {
+                return NotFound("Grade not found");
+            }
+
+            _context.Grades.Remove(grade);
+            await _context.SaveChangesAsync();
+
+            return Ok("Grade deleted successfully");
+        }
     }
 }

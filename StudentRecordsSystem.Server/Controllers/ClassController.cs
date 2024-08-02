@@ -49,6 +49,21 @@ namespace StudentRecordsSystem.Server.Controllers
         //Update
 
         //Delete
+        [HttpDelete]
+        [Route("Delete")]
+        public async Task<IActionResult> DeleteClass(ulong id)
+        {
+            var classObject = await _context.Classes.FindAsync(id);
+            if (classObject == null)
+            {
+                return NotFound("Class not found");
+            }
+
+            _context.Classes.Remove(classObject);
+            await _context.SaveChangesAsync();
+
+            return Ok("Class deleted successfully");
+        }
     }
 }
 
