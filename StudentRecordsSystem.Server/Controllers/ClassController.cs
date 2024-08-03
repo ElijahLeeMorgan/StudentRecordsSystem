@@ -47,6 +47,22 @@ namespace StudentRecordsSystem.Server.Controllers
         //Read by Id
 
         //Update
+        [HttpPut]
+        [Route("Put")]
+        public async Task<IActionResult> UpdateClass(ulong id, [FromBody] ClassGetDto dto)
+        {
+            var existingClass = await _context.Classes.FindAsync(id);
+            if (existingClass == null)
+            {
+                return NotFound("Class not found");
+            }
+
+            _mapper.Map(dto, existingClass);
+            _context.Classes.Update(existingClass);
+            await _context.SaveChangesAsync();
+
+            return Ok("Class updated successfully");
+        }
 
         //Delete
         [HttpDelete]

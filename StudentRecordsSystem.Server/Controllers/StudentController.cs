@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StudentRecordsSystem.Server.Core.Context;
+using StudentRecordsSystem.Server.Core.Dtos.Class;
 using StudentRecordsSystem.Server.Core.Dtos.Student;
 using StudentRecordsSystem.Server.Core.Entities;
 
@@ -46,6 +47,22 @@ namespace StudentRecordsSystem.Server.Controllers
         //Read by Id
 
         //Update
+        [HttpPut]
+        [Route("Put")]
+        public async Task<IActionResult> UpdateStudent(ulong id, [FromBody] StudentGetDto dto)
+        {
+            var existingStudent = await _context.Students.FindAsync(id);
+            if (existingStudent == null)
+            {
+                return NotFound("Student not found");
+            }
+
+            _mapper.Map(dto, existingStudent);
+            _context.Students.Update(existingStudent);
+            await _context.SaveChangesAsync();
+
+            return Ok("Student updated successfully");
+        }
 
         //Delete
         [HttpDelete]

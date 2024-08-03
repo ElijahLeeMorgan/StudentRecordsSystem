@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StudentRecordsSystem.Server.Core.Context;
+using StudentRecordsSystem.Server.Core.Dtos.Class;
 using StudentRecordsSystem.Server.Core.Dtos.Grade;
 using StudentRecordsSystem.Server.Core.Entities;
 
@@ -48,6 +49,22 @@ namespace StudentRecordsSystem.Server.Controllers
         // Read by Id
 
         // Update
+        [HttpPut]
+        [Route("Put")]
+        public async Task<IActionResult> UpdateGrade(ulong id, [FromBody] GradeGetDto dto)
+        {
+            var existingGrade = await _context.Grades.FindAsync(id);
+            if (existingGrade == null)
+            {
+                return NotFound("Grade not found");
+            }
+
+            _mapper.Map(dto, existingGrade);
+            _context.Grades.Update(existingGrade);
+            await _context.SaveChangesAsync();
+
+            return Ok("Grade updated successfully");
+        }
 
         // Delete
         [HttpDelete]

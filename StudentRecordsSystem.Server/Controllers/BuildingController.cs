@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StudentRecordsSystem.Server.Core.Context;
@@ -26,7 +25,7 @@ namespace StudentRecordsSystem.Server.Controllers
         // Create
         [HttpPost]
         [Route("Create")]
-        public async Task<IActionResult> CreateBuilding([FromBody] BuildingCreateDto dto)
+        public async Task<IActionResult> CreateBuilding([FromBody] BuildingGetDto dto)
         {
             Building newBuilding = _mapper.Map<Building>(dto);
             await _context.Buildings.AddAsync(newBuilding);
@@ -51,6 +50,23 @@ namespace StudentRecordsSystem.Server.Controllers
         // Read by Id
 
         // Update
+        [HttpPut]
+        [Route("Put")]
+        public async Task<IActionResult> UpdateBuilding(ulong id, [FromBody] BuildingGetDto dto)
+        {
+            var existingBuilding = await _context.Buildings.FindAsync(id);
+            if (existingBuilding == null)
+            {
+                return NotFound("Building not found");
+            }
+
+            _mapper.Map(dto, existingBuilding); // Update the existing building with new data
+            _context.Buildings.Update(existingBuilding);
+            await _context.SaveChangesAsync();
+
+            return Ok("Building updated successfully");
+        }
+
 
         // Delete
         [HttpDelete]
