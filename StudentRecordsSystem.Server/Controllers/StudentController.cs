@@ -25,7 +25,7 @@ namespace StudentRecordsSystem.Server.Controllers
         //Create
         [HttpPost]
         [Route("Create")]
-        public async Task<IActionResult> CreateStudent([FromBody] StudentCreateDto dto)
+        public async Task<IActionResult> CreateStudent([FromBody] StudentGetDto dto)
         {
             var newStudent = _mapper.Map<Student>(dto);
             await _context.Students.AddAsync(newStudent);

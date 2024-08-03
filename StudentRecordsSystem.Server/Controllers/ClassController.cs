@@ -24,7 +24,7 @@ namespace StudentRecordsSystem.Server.Controllers
         //Create
         [HttpPost]
         [Route("Create")]
-        public async Task<IActionResult> CreateClass([FromBody] ClassCreateDto dto)
+        public async Task<IActionResult> CreateClass([FromBody] ClassGetDto dto)
         {
             var newClass = _mapper.Map<Class>(dto);
             await _context.Classes.AddAsync(newClass);

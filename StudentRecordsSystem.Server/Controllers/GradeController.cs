@@ -26,7 +26,7 @@ namespace StudentRecordsSystem.Server.Controllers
         // Create
         [HttpPost]
         [Route("Create")]
-        public async Task<IActionResult> CreateGrade([FromBody] GradeCreateDto dto)
+        public async Task<IActionResult> CreateGrade([FromBody] GradeGetDto dto)
         {
             var newGrade = _mapper.Map<Grade>(dto);//Change var to Grade?
             await _context.Grades.AddAsync(newGrade);
