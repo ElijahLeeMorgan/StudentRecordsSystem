@@ -26,7 +26,7 @@ namespace StudentRecordsSystem.Server.Controllers
         // Create
         [HttpPost]
         [Route("Create")]
-        public async Task<IActionResult> CreateGrade([FromBody] GradeGetDto dto)
+        public async Task<IActionResult> CreateGrade([FromBody] GradeCreateDto dto)
         {
             var newGrade = _mapper.Map<Grade>(dto);//Change var to Grade?
             await _context.Grades.AddAsync(newGrade);
@@ -51,7 +51,7 @@ namespace StudentRecordsSystem.Server.Controllers
         // Update
         [HttpPut]
         [Route("Put")]
-        public async Task<IActionResult> UpdateGrade(ulong id, [FromBody] GradeGetDto dto)
+        public async Task<IActionResult> UpdateGrade(ulong id, [FromBody] GradeUpdateDto dto)
         {
             var existingGrade = await _context.Grades.FindAsync(id);
             if (existingGrade == null)

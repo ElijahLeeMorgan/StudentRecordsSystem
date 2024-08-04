@@ -25,7 +25,7 @@ namespace StudentRecordsSystem.Server.Controllers
         // Create
         [HttpPost]
         [Route("Create")]
-        public async Task<IActionResult> CreateBuilding([FromBody] BuildingGetDto dto)
+        public async Task<IActionResult> CreateBuilding([FromBody] BuildingUpdateDto dto)
         {
             Building newBuilding = _mapper.Map<Building>(dto);
             await _context.Buildings.AddAsync(newBuilding);
@@ -52,7 +52,7 @@ namespace StudentRecordsSystem.Server.Controllers
         // Update
         [HttpPut]
         [Route("Put")]
-        public async Task<IActionResult> UpdateBuilding(ulong id, [FromBody] BuildingGetDto dto)
+        public async Task<IActionResult> UpdateBuilding(ulong id, [FromBody] BuildingUpdateDto dto)
         {
             var existingBuilding = await _context.Buildings.FindAsync(id);
             if (existingBuilding == null)

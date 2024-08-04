@@ -25,7 +25,7 @@ namespace StudentRecordsSystem.Server.Controllers
         //Create
         [HttpPost]
         [Route("Create")]
-        public async Task<IActionResult> CreateStudent([FromBody] StudentGetDto dto)
+        public async Task<IActionResult> CreateStudent([FromBody] StudentCreateDto dto)
         {
             var newStudent = _mapper.Map<Student>(dto);
             await _context.Students.AddAsync(newStudent);
@@ -49,7 +49,7 @@ namespace StudentRecordsSystem.Server.Controllers
         //Update
         [HttpPut]
         [Route("Put")]
-        public async Task<IActionResult> UpdateStudent(ulong id, [FromBody] StudentGetDto dto)
+        public async Task<IActionResult> UpdateStudent(ulong id, [FromBody] StudentUpdateDto dto)
         {
             var existingStudent = await _context.Students.FindAsync(id);
             if (existingStudent == null)

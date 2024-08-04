@@ -1,6 +1,4 @@
-﻿using StudentRecordsSystem.Server.Core.Enums;
-
-namespace StudentRecordsSystem.Server.Core.Dtos.Class
+﻿namespace StudentRecordsSystem.Server.Core.Dtos.Class
 {
     public class ClassCreateDto
     {
