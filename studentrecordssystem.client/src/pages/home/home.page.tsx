@@ -4,11 +4,13 @@ import './home.scss';
 const Home = () => {
     return (
         <div className="content home">
-            <h3>Welcome!</h3>
+            <h1>Welcome!</h1>
             <br />
             <br />
             <span>
-            This is a simple student records system. You can add, edit, delete and view student grades'.
+                This is my student records web app built on a Vite + React + Typescript frontend, C#.NET backend, and a Microsoft SQL database.
+                <br />
+                You can add, edit, delete and view buildings, grades, students, and grades. Press any of the buttons above to get started.
             </span>
         </div>
     )

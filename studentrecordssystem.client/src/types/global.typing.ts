@@ -1,3 +1,4 @@
+//TODO Change datatypes to their proper types, if possible.
 export interface IBuilding {
     id: string;
     name: string;
@@ -6,6 +7,11 @@ export interface IBuilding {
     createdAt: string;
 }
 export interface ICreateBuildingDto {
+    name: string;
+    address: string;
+    phoneNumber: string;
+}
+export interface IUpdateBuildingDto {
     name: string;
     address: string;
     phoneNumber: string;
@@ -20,6 +26,10 @@ export interface IGrade {
 export interface ICreateGradeDto {
     year: string;
     buildingId: string;
+}
+export interface IUpdateGradeDto {
+    year: string;
+    buildingID: string;
 }
 export interface IStudent {
     id: string;
@@ -41,7 +51,16 @@ export interface ICreateStudentDto {
     email: string;
     gradeID: string;
 }
-
+export interface IUpdateStudentDto {
+    firstName: string;
+    lastName: string;
+    detentions: string;
+    absences: string;
+    emergencyContact: string;
+    gpa: string;
+    email: string;
+    gradeID: string;
+}
 export interface IClass {
     id: string;
     subject: string;
@@ -53,5 +72,10 @@ export interface IClass {
 }
 export interface ICreateClassDto {
     subject: string;
+    studentID: string;
+}
+export interface IUpdateClassDto {
+    subject: string;
+    grade: string;
     studentID: string;
 }

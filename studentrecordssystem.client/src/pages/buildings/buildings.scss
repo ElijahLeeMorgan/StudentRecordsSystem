@@ -4,6 +4,18 @@
     .heading {
         @include d-flex(row, space-between, center);
         width: 100%;
+        }
+    }
+
+//FOr some reason this modal refuses to chnage colors for darkmode. From what I've found this can be fixed with more typescript, but I don't want to overcomplicate things yet.
+.MuiPaper-elevation {
+    background-color: var(--bg-color);
+    color: var(--text-color1);
+    transition: inherit;
+
+    * {
+        color: inherit;
+        transition: inherit;
     }
 }
 
